@@ -1,0 +1,10 @@
+#!/bin/sh
+
+rm -i ./*.c
+rm -i ./*.cpp
+rm -i ./*.h
+rm -i ./main
+rm -i ./*.o
+rm -i ./*.py
+rm -i ./*.pl
+rm -i Makefile

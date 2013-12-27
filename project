@@ -1,0 +1,43 @@
+#!/bin/sh
+
+if [ "$1"  == "" ]
+	then echo '**** usage: ./project projectname'
+	exit
+fi
+
+# Creates project
+echo "**** Creating project $1..."
+
+#  Makefile
+touch Makefile
+
+echo '#Makefile for '$1 >>./Makefile
+echo "CC=clang" >>./Makefile
+echo "FLAGS=-g -Wall -Werror" >>./Makefile
+echo "OBJ=main.o" >>./Makefile
+echo "JVC=" >>./Makefile
+
+echo "main.o:" >>./Makefile
+echo '\t${CC} ${FLAGS} -o main.o -c main.c' >>./Makefile
+
+echo 'main: ${OBJ}' >>./Makefile
+echo '\t${CC} ${FLAGS} -o main ${OBJ}' >>./Makefile
+
+echo 'clean:' >>./Makefile
+echo '\trm ${OBJ} ${JVC} main' >>./Makefile
+
+echo 'remake: clean main' >>./Makefile
+
+# main.c
+touch main.c
+echo '//	main.c' >>./main.c
+echo "//	created `date`" >>./main.c
+echo "\n" >>./main.c
+echo "int main(int argc, char *argv[])" >>./main.c
+echo "{" >>./main.c
+echo "\n" >>./main.c
+echo "\n" >>./main.c
+echo "\treturn 0;" >>./main.c
+echo "}" >>./main.c
+
+echo "**** ....done."

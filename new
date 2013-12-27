@@ -1,0 +1,50 @@
+#!/bin/sh
+
+if [ "$1"  == "" ]
+	then echo '**** usage: ./new [lang] filename'
+	exit
+fi
+
+if [ "$1" == "c" ]
+then 
+	touch $2.c
+	touch $2.h
+	echo '//\t'$2.c >>./$2.c
+	echo "//\tcreated `date`" >>./$2.c
+	echo '//\t'$2.h >>./$2.h
+	echo "//\tcreated `date`" >>./$2.h
+	./addobj $2.o
+	echo $2.o: >>./Makefile
+	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.c' >>./Makefile
+	echo "**** Created $2.c, $2.h"
+else if [ "$1" == "cpp" ]
+then
+	touch $2.cpp
+	touch $2.h
+	echo '//\t'$2.cpp >>./$2.cpp
+	echo "//\tcreated `date`" >>./$2.cpp
+	echo '//\t'$2.h >>./$2.h
+	echo "//\tcreated `date`" >>./$2.h
+	./addobj $2.o
+	echo $2.o: >>./Makefile
+	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.cpp' >>./Makefile
+	echo "**** Created $2.cpp, $2.h"
+else if [ "$1" == "java" ]
+then
+	touch $2.java
+	echo $2.class: >>./Makefile
+	echo '\tjavac '$2.java >>./Makefile
+	echo "**** Created $2.java"
+else if [ "$1" == "py" ]
+then
+	touch $2.py
+	echo "**** Created $2.py"
+else if [ "$1" == "pl" ]
+then
+	touch $2.pl
+	echo "**** Created $2.pl"
+fi
+fi
+fi
+fi
+fi
