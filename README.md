@@ -3,6 +3,7 @@ Welcome to Codespace 1.0!
 Codespace is a lightweight command line development environment.
 
 **** Latest  Features ****
+
 1.0.0 - We are up and running!
 	- ./project creates a Makefile and a main.c file
 	- ./new creates new files in different languages and adds them to the Makefile
