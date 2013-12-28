@@ -16,6 +16,8 @@ then
 	./addobj $2.o
 	echo $2.o: >>./Makefile
 	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.c' >>./Makefile
+	git add $2.c
+	git add $2.h
 	echo "**** Created $2.c, $2.h"
 else if [ "$1" == "cpp" ]
 then
@@ -28,21 +30,49 @@ then
 	./addobj $2.o
 	echo $2.o: >>./Makefile
 	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.cpp' >>./Makefile
+	git add $2.cpp
+	git add $2.h
 	echo "**** Created $2.cpp, $2.h"
 else if [ "$1" == "java" ]
 then
 	touch $2.java
+	echo "class $2 {" >>./$2.java
+	echo "\n\n}" >>./$2.java
 	echo $2.class: >>./Makefile
 	echo '\tjavac '$2.java >>./Makefile
+	git add $2.java
 	echo "**** Created $2.java"
 else if [ "$1" == "py" ]
 then
 	touch $2.py
+	echo "#!/usr/bin/python" >>./$2.py
+	git add $2.py
 	echo "**** Created $2.py"
 else if [ "$1" == "pl" ]
 then
 	touch $2.pl
+	echo "#!/usr/bin/perl" >>./$2.pl
+	git add $2.pl
 	echo "**** Created $2.pl"
+else if [ "$1" == "rb" ]
+then
+	touch $2.rb
+	echo "#!/usr/bin/ruby" >>./$2.rb
+	git add $2.rb
+	echo "**** Created $2.rb"
+else if [ "$1" == "sh" ]
+then
+	touch $2.sh
+	echo "#!/bin/sh" >>./$2.sh
+	git add $2.sh
+	echo "**** Created $2.pl"
+else
+	touch $1.txt
+	echo $1.txt >>./$1.txt
+	git add $1.txt
+	echo "**** Created $1.txt"
+fi
+fi
 fi
 fi
 fi

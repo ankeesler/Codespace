@@ -5,8 +5,9 @@ if [ "$1"  == "" ]
 	exit
 fi
 
-# Creates project
+# Creates project and initiate git
 echo "**** Creating project $1..."
+git init
 
 #  Makefile
 touch Makefile
@@ -28,6 +29,8 @@ echo '\trm ${OBJ} ${JVC} main' >>./Makefile
 
 echo 'remake: clean main' >>./Makefile
 
+git add Makefile
+
 # main.c
 touch main.c
 echo '//	main.c' >>./main.c
@@ -39,5 +42,10 @@ echo "\n" >>./main.c
 echo "\n" >>./main.c
 echo "\treturn 0;" >>./main.c
 echo "}" >>./main.c
+
+git add main.c
+
+# make first commit for git
+git commit -m 'first commit'
 
 echo "**** ....done."
