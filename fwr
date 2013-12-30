@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -z  "$1" -o -z "$2" ]; then echo 'usage: ./fwr message file'; fi
+echo $1 >>$2
+
