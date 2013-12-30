@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "usage: ./srch regex"
+	exit
+fi
+
+files=`cat ./files.log`
+
+echo "**** Finding for regex $1"
+
+for f in $files
+do
+	grep -Hin $1 $f
+	echo ""
+done
