@@ -1,3 +1,0 @@
-#!/bin/sh
-
-perl -p -i -e "s/OBJ=(.*)/OBJ=\1 $1/" ./Makefile

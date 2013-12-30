@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$1"  == "" ]
+if [ -z "$1" ]
 	then echo '**** usage: ./project projectname'
 	exit
 fi
@@ -9,39 +9,46 @@ fi
 echo "**** Creating project $1..."
 git init
 
+# files.log
+touch files.log
+./fwr files.log ./files.log
+git add files.log
+
 #  Makefile
 touch Makefile
+./fwr Makefile ./files.log
 
-echo '#Makefile for '$1 >>./Makefile
-echo "CC=clang" >>./Makefile
-echo "FLAGS=-g -Wall -Werror" >>./Makefile
-echo "OBJ=main.o" >>./Makefile
-echo "JVC=" >>./Makefile
+./fwr "# Makefile for $1" ./Makefile
+./fwr "CC=clang" ./Makefile
+./fwr "FLAGS=-g -Wall -Werror" ./Makefile
+./fwr "OBJ=main.o" ./Makefile
+./fwr "JVC=" ./Makefile
 
-echo "main.o:" >>./Makefile
-echo '\t${CC} ${FLAGS} -o main.o -c main.c' >>./Makefile
+./fwr "main.o:" ./Makefile
+./fwr '\t${CC} ${FLAGS} -o main.o -c main.c' ./Makefile
+./fwr 'main: ${OBJ}' ./Makefile
+./fwr '\t${CC} ${FLAGS} -o main ${OBJ}' ./Makefile
 
-echo 'main: ${OBJ}' >>./Makefile
-echo '\t${CC} ${FLAGS} -o main ${OBJ}' >>./Makefile
+./fwr 'clean:' ./Makefile
+./fwr '\trm ${OBJ} ${JVC} main' ./Makefile
 
-echo 'clean:' >>./Makefile
-echo '\trm ${OBJ} ${JVC} main' >>./Makefile
-
-echo 'remake: clean main' >>./Makefile
+./fwr 'remake: clean main' ./Makefile
 
 git add Makefile
 
 # main.c
 touch main.c
-echo '//	main.c' >>./main.c
-echo "//	created `date`" >>./main.c
-echo "\n" >>./main.c
-echo "int main(int argc, char *argv[])" >>./main.c
-echo "{" >>./main.c
-echo "\n" >>./main.c
-echo "\n" >>./main.c
-echo "\treturn 0;" >>./main.c
-echo "}" >>./main.c
+./fwr main.c ./files.log
+
+./fwr '//	main.c' ./main.c
+./fwr "//	created `date`" ./main.c
+./fwr "\n" ./main.c
+./fwr "int main(int argc, char *argv[])" ./main.c
+./fwr "{" ./main.c
+./fwr "\n" ./main.c
+./fwr "\n" ./main.c
+./fwr "\treturn 0;" ./main.c
+./fwr "}" ./main.c
 
 git add main.c
 
@@ -49,3 +56,4 @@ git add main.c
 git commit -m 'first commit'
 
 echo "**** ....done."
+
