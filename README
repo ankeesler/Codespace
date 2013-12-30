@@ -17,10 +17,18 @@ Codespace is a lightweight command line development environment.
 		Python (./new py filename)
 		Perl (./new pl filename)
 		Ruby (./new rb filename)
-		Shell (./new sh filename)
+		POSIX Shell (./new sh filename)
 	- create a text file with ./new filename 
 3. make target
 	- compile your source code
+
+
+**** Utilities ****
+1. ./fwr message file
+	- appends message to the end of file
+2. ./rpl replace_this_regex with_this_regex in_this_file
+	- replaces the first regular expression with the second regular expression in the file given
+
 
 **** Latest  Features ****
 1.0 - We are up and running!

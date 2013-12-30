@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z "$1" -o -z "$2" -o -z "$3" ]
+then
+	echo "usage: ./rpl replace_this_regex with_this_regex in_this_file"
+	exit
+fi
+
+sed -i.bak "s/$1/$2/g" $3
+rm $3.bak 
