@@ -5,9 +5,16 @@ if [ -z "$1" ]
 	exit
 fi
 
-# Creates project and initiate git
-echo "**** Creating project $1..."
-git init
+# check if project has already been created
+if [ -f ./files.log ]
+then
+	echo 'project already created'
+	exit
+else
+	# Creates project and initiate git
+	echo "**** Creating project $1..."
+	git init
+fi
 
 # files.log
 touch files.log
