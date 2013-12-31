@@ -1,6 +1,6 @@
-Welcome to Codespace 1.1.0!
+Welcome to Codespace 1.1.1!
 
-Codespace is a lightweight command line development environment.
+Codespace is a lightweight POSIX command line development environment.
 
 **** Latest  Features ****
 
@@ -22,5 +22,6 @@ Codespace is a lightweight command line development environment.
 	- ./fwr appends simple text onto the end of a file 
 
 1.0.1 - Coming soon!
-	- more GIT support
-	- cleaner deletion of files
+	- ./gcomt commits all of your files for you to the local repository
+	- ./project now lets you choose compiled project language
+	- bug fixes (protecting against duplicates, code efficiency)

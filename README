@@ -31,7 +31,8 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- replaces the first regular expression with the second regular expression in the file given
 3. ./srch regex
 	- searches for regex in all of your files
-
+4. ./gcomt message
+	- commits all of your files with message
 
 **** Latest  Features ****
 1.0 - We are up and running!
