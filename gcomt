@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "**** usage: ./gcomt message"
+	exit
+fi
+
+git add -A
+git commit -m "$1"
