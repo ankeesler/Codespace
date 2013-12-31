@@ -6,11 +6,9 @@ then
 	exit
 fi
 
-files=`cat ./files.log`
-
 echo "**** Finding for regex $1"
 
-for f in $files
+for f in `cat ./files.log`
 do
 	grep -Hin $1 $f
 	echo ""

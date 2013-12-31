@@ -55,6 +55,7 @@ else if [ "$1" == "py" ]
 then
 	if [ -f $2.py ]; then echo "**** $2.py already created"; exit; fi
 	touch $2.py
+	chmod 700 $2.py
 	./fwr $2.py ./files.log
 	./fwr "#!/usr/bin/python" ./$2.py
 	git add $2.py
@@ -63,6 +64,7 @@ else if [ "$1" == "pl" ]
 then
 	if [ -f $2.pl ]; then echo "**** $2.pl already created"; exit; fi
 	touch $2.pl
+	chmod 700 $2.pl
 	./fwr $2.pl ./files.log
 	./fwr "#!/usr/bin/perl" ./$2.pl
 	git add $2.pl
@@ -71,6 +73,7 @@ else if [ "$1" == "rb" ]
 then
 	if [ -f $2.rb ]; then echo "**** $2.rb already created"; exit; fi
 	touch $2.rb
+	chmod 700 $2.rb
 	./fwr $2.rb ./files.log
 	./fwr "#!/usr/bin/ruby" ./$2.rb
 	git add $2.rb
@@ -79,6 +82,7 @@ else if [ "$1" == "sh" ]
 then
 	if [ -f $2.sh ]; then echo "**** $2.sh already created"; exit; fi
 	touch $2.sh
+	chmod 700 $2.sh
 	./fwr $2.sh ./files.log
 	./fwr "#!/bin/sh" ./$2.sh
 	git add $2.sh

@@ -1,10 +1,11 @@
 Welcome to Codespace 1.1.0!
 
-Codespace is a lightweight command line development environment.
+Codespace is a lightweight, POSIX compiant, command line development environment.
 
 **** Creating a new Project ****
-1. ./project projectname 
+1. ./project [c] projectname 
 	- builds and configures your project
+	- optionally include c argument to create a C project
 	- creates a local git repository
 2. ./new [lang] filename 
 	- creates new files
@@ -43,3 +44,9 @@ Codespace is a lightweight command line development environment.
 	- ./new can now create shell and ruby files
 	- ./new adds #! lines to the top of scripts
 	- ./README gives more details of language support
+
+1.1.0 - New utilities!
+	- ./srch lets you search all your files for a regular expression
+	- ./files.log lists all of the files you create
+	- ./rpl replaces a regular expression with another
+	- ./fwr appends simple text onto the end of a file 

@@ -8,7 +8,7 @@ fi
 # check if project has already been created
 if [ -f ./files.log ]
 then
-	echo 'project already created'
+	echo '**** project already created'
 	exit
 else
 	# Creates project and initiate git
@@ -26,13 +26,23 @@ touch Makefile
 ./fwr Makefile ./files.log
 
 ./fwr "# Makefile for $1" ./Makefile
-./fwr "CC=clang" ./Makefile
+if [ "$1" == "c" ]
+then
+	./fwr "CC=clang" ./Makefile
+else
+	./fwr "CC=clang++" ./Makefile
+fi
 ./fwr "FLAGS=-g -Wall -Werror" ./Makefile
 ./fwr "OBJ=main.o" ./Makefile
 ./fwr "JVC=" ./Makefile
 
 ./fwr "main.o:" ./Makefile
-./fwr '\t${CC} ${FLAGS} -o main.o -c main.c' ./Makefile
+if [ "$1" == "c" ]
+then
+	./fwr '\t${CC} ${FLAGS} -o main.o -c main.c' ./Makefile
+else
+	./fwr '\t${CC} ${FLAGS} -o main.o -c main.cpp' ./Makefile
+fi
 ./fwr 'main: ${OBJ}' ./Makefile
 ./fwr '\t${CC} ${FLAGS} -o main ${OBJ}' ./Makefile
 
@@ -43,21 +53,22 @@ touch Makefile
 
 git add Makefile
 
-# main.c
-touch main.c
-./fwr main.c ./files.log
+# main file 
+if [ "$1" == "c" ]; then end='.c'; else end='.cpp'; fi 
+touch main$end
+./fwr main$end ./files.log
 
-./fwr '//	main.c' ./main.c
-./fwr "//	created `date`" ./main.c
-./fwr "\n" ./main.c
-./fwr "int main(int argc, char *argv[])" ./main.c
-./fwr "{" ./main.c
-./fwr "\n" ./main.c
-./fwr "\n" ./main.c
-./fwr "\treturn 0;" ./main.c
-./fwr "}" ./main.c
+./fwr "//	main$end" ./main$end
+./fwr "//	created `date`" ./main$end
+./fwr "\n" ./main$end
+./fwr "int main(int argc, char *argv[])" ./main$end
+./fwr "{" ./main$end
+./fwr "\n" ./main$end
+./fwr "\n" ./main$end
+./fwr "\treturn 0;" ./main$end
+./fwr "}" ./main$end
 
-git add main.c
+git add main$end
 
 # make first commit for git
 git commit -m 'first commit'
