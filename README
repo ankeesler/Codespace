@@ -1,4 +1,4 @@
-Welcome to Codespace 1.1.0!
+Welcome to Codespace 1.1.1!
 
 Codespace is a lightweight, POSIX compiant, command line development environment.
 
@@ -35,10 +35,6 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- commits all of your files with message
 
 **** Latest  Features ****
-1.0 - We are up and running!
-	* ./project creates a Makefile and a main.c file
-	* ./new creates new files in different languages and adds them to the Makefile
- 
 1.0.1 - GIT and language support!
 	- ./project now creates a local git repository for your project
 	- ./new adds your files to git repository automatically
@@ -51,3 +47,8 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- ./files.log lists all of the files you create
 	- ./rpl replaces a regular expression with another
 	- ./fwr appends simple text onto the end of a file 
+
+1.1.1 - GIT and language support!
+	- ./gcomt commits all of your files for you to the local repository
+	- ./project now lets you choose compiled project language
+	- bug fixes (protecting against duplicates, code efficiency)
