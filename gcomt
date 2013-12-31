@@ -6,5 +6,8 @@ then
 	exit
 fi
 
-git add -A
+for f in `cat ./files.log`
+do
+	git add $f
+done
 git commit -m "$1"
