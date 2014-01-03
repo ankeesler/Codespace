@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ ! -f "./files.log" ]
+then
+	echo "**** must create a project first"
+	exit
+fi
+
+if [ -z $1 ]
+then
+	echo "**** usage: ./export destination"
+	exit
+fi
+
+mkdir codespace_project
+
+for f in `cat files.log`
+do
+	mv $f ./codespace_project
+done
+
+mv ./codespace_project $1

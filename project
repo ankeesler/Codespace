@@ -25,7 +25,7 @@ git add files.log
 touch Makefile
 ./fwr Makefile ./files.log
 
-./fwr "# Makefile for $1" ./Makefile
+./fwr "# Makefile for $2" ./Makefile
 if [ "$1" == "c" ]
 then
 	./fwr "CC=clang" ./Makefile
