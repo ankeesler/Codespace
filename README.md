@@ -1,4 +1,4 @@
-Welcome to Codespace 1.1.1!
+Welcome to Codespace 1.1.2!
 
 Codespace is a lightweight, POSIX compiant, command line development environment.
 
@@ -25,3 +25,7 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- ./gcomt commits all of your files for you to the local repository
 	- ./project now lets you choose compiled project language
 	- bug fixes (protecting against duplicates, code efficiency)
+
+1.1.2 - New project management tool - export
+	- ./export will export your completed project for you
+	- bug fixes (incorrect project naming)
