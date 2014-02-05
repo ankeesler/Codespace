@@ -37,12 +37,6 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- exports your project to directory
 
 **** Latest  Features ****
-1.1.0 - New utilities!
-	- ./srch lets you search all your files for a regular expression
-	- ./files.log lists all of the files you create
-	- ./rpl replaces a regular expression with another
-	- ./fwr appends simple text onto the end of a file 
-
 1.1.1 - GIT and language support!
 	- ./gcomt commits all of your files for you to the local repository
 	- ./project now lets you choose compiled project language
@@ -51,3 +45,6 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 1.1.2 - New project management tool - export
 	- ./export will export your completed project for you
 	- bug fixes (incorrect project naming)
+
+1.1.3 - Bug Fixes
+	- fixed git bug

@@ -11,15 +11,13 @@ then
 	echo '**** project already created'
 	exit
 else
-	# Creates project and initiate git
+	# Creates project
 	echo "**** Creating project $1..."
-	git init
 fi
 
 # files.log
 touch files.log
 ./fwr files.log ./files.log
-git add files.log
 
 #  Makefile
 touch Makefile
@@ -51,8 +49,6 @@ fi
 
 ./fwr 'remake: clean main' ./Makefile
 
-git add Makefile
-
 # main file 
 if [ "$1" == "c" ]; then end='.c'; else end='.cpp'; fi 
 touch main$end
@@ -67,11 +63,6 @@ touch main$end
 ./fwr "\n" ./main$end
 ./fwr "\treturn 0;" ./main$end
 ./fwr "}" ./main$end
-
-git add main$end
-
-# make first commit for git
-git commit -m 'first commit'
 
 echo "**** ....done."
 

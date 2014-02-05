@@ -29,3 +29,6 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 1.1.2 - New project management tool - export
 	- ./export will export your completed project for you
 	- bug fixes (incorrect project naming)
+
+1.1.3 - Bug Fixes
+	- Removed git bug
