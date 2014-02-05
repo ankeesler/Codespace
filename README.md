@@ -32,3 +32,4 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 
 1.1.3 - Bug Fixes
 	- Removed git bug
+	- Removed ./project bug for C projects
