@@ -11,4 +11,3 @@ do
 	rm -i $f
 done
 
-rm ./file.log
