@@ -35,13 +35,10 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- commits all of your files with message
 5. ./export directory
 	- exports your project to directory
+6. ./sum
+	- prints out a summary of your project
 
 **** Latest  Features ****
-1.1.1 - GIT and language support!
-	- ./gcomt commits all of your files for you to the local repository
-	- ./project now lets you choose compiled project language
-	- bug fixes (protecting against duplicates, code efficiency)
-
 1.1.2 - New project management tool - export
 	- ./export will export your completed project for you
 	- bug fixes (incorrect project naming)
@@ -50,3 +47,7 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- fixed git bug
 	- fixed ./project bug for C projects
 	- fixed ./delete bug with files.log
+
+1.2.1 - Project variables and updated export feature!
+      	- Persistant project variables unique to your project
+	- Updated export feature to sleek new exp	

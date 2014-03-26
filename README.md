@@ -34,3 +34,7 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- Removed git bug
 	- Removed ./project bug for C projects
 	- Removed ./delete bug with files.log
+
+1.2.1 - Project variables and updated export feature!
+      	- Persistant project variables unique to your project
+	- Updated export feature to sleek new exp
