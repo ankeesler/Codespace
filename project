@@ -19,6 +19,12 @@ fi
 touch files.log
 ./fwr files.log ./files.log
 
+# vars.log
+touch vars.log
+./fwr vars.log ./files.log
+./fwr "PROJECTNAME=$1" ./vars.log
+./fwr "STARTTIME="`date +%s` ./vars.log
+
 #  Makefile
 touch Makefile
 ./fwr Makefile ./files.log

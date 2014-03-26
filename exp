@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ ! -f "./files.log" ]
+then
+	echo "**** must create a project first"
+	exit
+fi
+
+if [ -z $1 ]
+then
+	echo "**** usage: ./export destination"
+	exit
+fi
+
+# put end time on vars
+./fwr "ENDTIME="`date +%s` ./vars.log
+
+# Project directory name (doing this while drunk, probably come out like facebook)
+PROJECTDIR=`sed -n 's/PROJECTNAME=\(.*\)/\1/p' ./vars.log`
+
+mkdir ./$PROJECTDIR
+
+for f in `cat files.log`
+do
+	mv $f ./$PROJECTDIR
+done
+
+mv ./$PROJECTDIR $1
