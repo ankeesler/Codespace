@@ -38,3 +38,25 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 1.2.1 - Project variables and updated export feature!
       	- Persistant project variables unique to your project
 	- Updated export feature to sleek new exp
+
+1.2.2 - Bug fixes, simplifying file structure and installation
+	- install.sh will install your own Codespace environment
+	- removed old, unnecessary utilities (wrappers for grep, sed, echo)
+	- ensured consistent formatting of messages to user
+	- removed dependencies on old utilities
+
+**** Utilities ****
+1. ./export directory
+	- exports your project to directory
+2. ./summary
+	- prints out a summary of your project
+
+**** Depreciated Utilities ****
+1. ./fwr message file
+	- appends message to the end of file
+2. ./rpl replace_this_regex with_this_regex in_this_file
+	- replaces the first regular expression with the second regular expression in the file given
+3. ./srch regex
+	- searches for regex in all of your files
+4. ./gcomt message
+	- commits all of your files with message

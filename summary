@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ ! -f files.log ]
+then
+    echo '**** No current project.'
+    exit
+fi
+
+# print out the summary of project
+
+echo "****"
+echo "\t\t\t Project "`sed -n 's/PROJECTNAME=\(.*\)/\1/p' ./vars.log`
+
+started=`sed -n 's/STARTTIME=\(.*\)/\1/p' ./vars.log`
+ended=`sed -n 's/ENDTIME=\(.*\)/\1/p' ./vars.log`
+
+echo "Started: "`date -r $started`
+
+if [ $ended -n == 0 ]
+then
+    echo "Ended: "`date -r $ended`
+fi
+
+echo "****"

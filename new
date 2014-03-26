@@ -10,79 +10,81 @@ then
 	if [ -f $2.c ]; then echo "**** $2.c already created"; exit; fi
 	touch $2.c
 	touch $2.h
-	./fwr $2.c ./files.log
-	./fwr $2.h ./files.log
-	./fwr '//\t'$2.c ./$2.c
-	./fwr "//\tcreated `date`" ./$2.c
-	./fwr '//\t'$2.h ./$2.h
-	./fwr "//\tcreated `date`" ./$2.h
-	./rpl 'OBJ=\(.*\)' 'OBJ=\1 '$2.o ./Makefile
-	./fwr $2.o: ./Makefile
-	./fwr '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.c' ./Makefile
+	echo $2.c >> ./files.log
+	echo $2.h >> ./files.log
+	echo '//\t'$2.c >> ./$2.c
+	echo "//\tcreated `date`" >> ./$2.c
+	echo '//\t'$2.h >> ./$2.h
+	echo "//\tcreated `date`" >> ./$2.h
+	sed -i.bak "s/OBJ=\(.*\)/OBJ=\1 $2.o/g" ./Makefile
+	rm ./Makefile.bak
+	echo $2.o: >> ./Makefile
+	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.c' >> ./Makefile
 	echo "**** Created $2.c, $2.h"
 else if [ "$1" == "cpp" ]
 then
 	if [ -f $2.cpp ]; then echo "**** $2.cpp already created"; exit; fi
 	touch $2.cpp
 	touch $2.h
-	./fwr $2.cpp ./files.log
-	./fwr $2.h ./files.log
-	./fwr '//\t'$2.cpp ./$2.cpp
-	./fwr "//\tcreated `date`" ./$2.cpp
-	./fwr '//\t'$2.h ./$2.h
-	./fwr "//\tcreated `date`" ./$2.h
-	./rpl 'OBJ=\(.*\)' 'OBJ=\1 '$2.o ./Makefile
-	./fwr $2.o: ./Makefile
-	./fwr '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.cpp' ./Makefile
+	echo $2.cpp >> ./files.log
+	echo $2.h >> ./files.log
+	echo '//\t'$2.cpp >> ./$2.cpp
+	echo "//\tcreated `date`" >> ./$2.cpp
+	echo '//\t'$2.h >> ./$2.h
+	echo "//\tcreated `date`" >> ./$2.h
+	sed -i.bak "s/OBJ=\(.*\)/OBJ=\1 $2.o/g" ./Makefile
+	rm ./Makefile.bak
+	echo $2.o: >> ./Makefile
+	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.cpp' >> ./Makefile
 	echo "**** Created $2.cpp, $2.h"
 else if [ "$1" == "java" ]
 then
 	if [ -f $2.java ]; then echo "**** $2.java already created"; exit; fi
 	touch $2.java
-	./fwr $2.java ./files.log
-	./fwr "class $2 {" ./$2.java
-	./fwr "\n\n}" ./$2.java
-	./rpl 'JVC=\(.*\)' 'JVC=\1 '$2.class ./Makefile
-	./fwr $2.class: ./Makefile
-	./fwr '\tjavac '$2.java ./Makefile
+	echo $2.java >> ./files.log
+	echo "class $2 {" >> ./$2.java
+	echo "\n\n}" >> ./$2.java
+	sed -i.bak "s/JVC=\(.*\)/JVC=\1 $2.class/g" ./Makefile
+	echo $2.class: >> ./Makefile
+	echo '\tjavac '$2.java >> ./Makefile
 	echo "**** Created $2.java"
 else if [ "$1" == "py" ]
 then
 	if [ -f $2.py ]; then echo "**** $2.py already created"; exit; fi
 	touch $2.py
 	chmod 700 $2.py
-	./fwr $2.py ./files.log
-	./fwr "#!/usr/bin/python" ./$2.py
+	echo $2.py >> ./files.log
+	echo "#!/usr/bin/python" >> ./$2.py
 	echo "**** Created $2.py"
 else if [ "$1" == "pl" ]
 then
 	if [ -f $2.pl ]; then echo "**** $2.pl already created"; exit; fi
 	touch $2.pl
 	chmod 700 $2.pl
-	./fwr $2.pl ./files.log
-	./fwr "#!/usr/bin/perl" ./$2.pl
+	echo $2.pl >> ./files.log
+	echo "#!/usr/bin/perl" >> ./$2.pl
 	echo "**** Created $2.pl"
 else if [ "$1" == "rb" ]
 then
 	if [ -f $2.rb ]; then echo "**** $2.rb already created"; exit; fi
 	touch $2.rb
 	chmod 700 $2.rb
-	./fwr $2.rb ./files.log
-	./fwr "#!/usr/bin/ruby" ./$2.rb
+	echo $2.rb >> ./files.log
+	echo "#!/usr/bin/ruby" >> ./$2.rb
 	echo "**** Created $2.rb"
 else if [ "$1" == "sh" ]
 then
 	if [ -f $2.sh ]; then echo "**** $2.sh already created"; exit; fi
 	touch $2.sh
 	chmod 700 $2.sh
-	./fwr $2.sh ./files.log
-	./fwr "#!/bin/sh" ./$2.sh
+	echo $2.sh >> ./files.log
+	echo "#!/bin/sh" >> ./$2.sh
 	echo "**** Created $2.sh"
 else
 	if [ -f $1.txt ]; then echo "**** $1.txt already created"; exit; fi
 	touch $1.txt
-	./fwr $1.txt ./files.log
-	./fwr $1.txt ./$1.txt
+	echo $1.txt >> ./files.log
+	echo $1.txt >> ./$1.txt
 	echo "**** Created $1.txt"
 fi
 fi

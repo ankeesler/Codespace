@@ -17,58 +17,59 @@ fi
 
 # files.log
 touch files.log
-./fwr files.log ./files.log
+echo files.log >> ./files.log
 
 # vars.log
 touch vars.log
-./fwr vars.log ./files.log
-./fwr "PROJECTNAME=$1" ./vars.log
-./fwr "STARTTIME="`date +%s` ./vars.log
+echo vars.log >> ./files.log
+echo  "PROJECTNAME=$1" >>  ./vars.log
+echo  "STARTTIME="`date +%s` >> ./vars.log
 
 #  Makefile
 touch Makefile
-./fwr Makefile ./files.log
+echo Makefile >> ./files.log
 
-./fwr "# Makefile for $2" ./Makefile
+echo  "# Makefile for $2" >> ./Makefile
 if [ "$1" == "c" ]
 then
-	./fwr "CC=clang" ./Makefile
+	echo  "CC=clang" >> ./Makefile
 else
-	./fwr "CC=clang++" ./Makefile
+	echo  "CC=clang++" >> ./Makefile
 fi
-./fwr "FLAGS=-g -Wall -Werror" ./Makefile
-./fwr "OBJ=main.o" ./Makefile
-./fwr "JVC=" ./Makefile
+echo "FLAGS=-g -Wall -Werror" >> ./Makefile
+echo "OBJ=main.o" >> ./Makefile
+echo "JVC=" >> ./Makefile
 
-./fwr "main.o:" ./Makefile
+echo  "main.o:" >> ./Makefile
 if [ "$1" == "c" ]
 then
-	./fwr '\t${CC} ${FLAGS} -o main.o -c main.c' ./Makefile
+	echo '\t${CC} ${FLAGS} -o main.o -c main.c' >> ./Makefile
 else
-	./fwr '\t${CC} ${FLAGS} -o main.o -c main.cpp' ./Makefile
+	echo '\t${CC} ${FLAGS} -o main.o -c main.cpp' >> ./Makefile
 fi
-./fwr 'main: ${OBJ}' ./Makefile
-./fwr '\t${CC} ${FLAGS} -o main ${OBJ}' ./Makefile
+echo 'main: ${OBJ}' >> ./Makefile
+echo '\t${CC} ${FLAGS} -o main ${OBJ}' >> ./Makefile
 
-./fwr 'clean:' ./Makefile
-./fwr '\trm ${OBJ} ${JVC} main' ./Makefile
+echo 'clean:'>> ./Makefile
+echo '\trm -f ${OBJ}' >> ./Makefile
+echo '\trm -f ${JVC}' >> ./Makefile
 
-./fwr 'remake: clean main' ./Makefile
+echo 'remake: clean main' >> ./Makefile
 
 # main file 
 if [ "$1" == "c" ]; then end='.c'; else end='.cpp'; fi 
 touch main$end
-./fwr main$end ./files.log
+echo main$end >> ./files.log
 
-./fwr "//	main$end" ./main$end
-./fwr "//	created `date`" ./main$end
-./fwr "\n" ./main$end
-./fwr "int main(int argc, char *argv[])" ./main$end
-./fwr "{" ./main$end
-./fwr "\n" ./main$end
-./fwr "\n" ./main$end
-./fwr "\treturn 0;" ./main$end
-./fwr "}" ./main$end
+echo "//	main$end" >> ./main$end
+echo "//	created `date`" >> ./main$end
+echo "\n" >> ./main$end
+echo "int main(int argc, char *argv[])" >> ./main$end
+echo "{" >> ./main$end
+echo "\n" >> ./main$end
+echo "\n" >> ./main$end
+echo "\treturn 0;" >> ./main$end
+echo "}" >> ./main$end
 
 echo "**** ....done."
 

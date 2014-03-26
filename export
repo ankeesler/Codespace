@@ -2,7 +2,7 @@
 
 if [ ! -f "./files.log" ]
 then
-	echo "**** must create a project first"
+	echo "**** No current project."
 	exit
 fi
 
@@ -12,11 +12,19 @@ then
 	exit
 fi
 
-mkdir codespace_project
+# put end time on vars
+echo "ENDTIME="`date +%s` >> ./vars.log
+
+# Project directory name (doing this while drunk, probably come out like facebook)
+PROJECTDIR=`sed -n 's/PROJECTNAME=\(.*\)/\1/p' ./vars.log`
+
+mkdir ./$PROJECTDIR
 
 for f in `cat files.log`
 do
-	mv $f ./codespace_project
+	mv $f ./$PROJECTDIR
 done
 
-mv ./codespace_project $1
+mv ./$PROJECTDIR $1
+
+./summary > ./$1/$PROJECTDIR/summary.txt
