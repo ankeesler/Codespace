@@ -11,8 +11,14 @@ fi
 echo "****"
 echo "\t\t\t Project "`sed -n 's/PROJECTNAME=\(.*\)/\1/p' ./vars.log`
 
+echo "C/CPP: "`sed -n 's/LANGUAGE=\(.*\)/\1/p' ./vars.log`
+
 started=`sed -n 's/STARTTIME=\(.*\)/\1/p' ./vars.log`
 ended=`sed -n 's/ENDTIME=\(.*\)/\1/p' ./vars.log`
+
+now=`date +%s`
+elapsed=`echo "scale =4;($now - $started) /3600.0" | bc`
+echo "Elapsed: $elapsed hours"
 
 echo "Started: "`date -r $started`
 

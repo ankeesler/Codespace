@@ -24,6 +24,7 @@ touch vars.log
 echo vars.log >> ./files.log
 echo  "PROJECTNAME=$1" >>  ./vars.log
 echo  "STARTTIME="`date +%s` >> ./vars.log
+if [ "$1" == "c" ]; then echo "LANGUANGE=C" >> ./vars.log; else echo "LANGUAGE=CPP" >> ./vars.log; fi
 
 #  Makefile
 touch Makefile
@@ -55,6 +56,9 @@ echo '\trm -f ${OBJ}' >> ./Makefile
 echo '\trm -f ${JVC}' >> ./Makefile
 
 echo 'remake: clean main' >> ./Makefile
+
+echo 'archive: clean' >> ./Makefile
+echo "\ttar -cvzf $1.tar.gz \`cat files.log\`" >> ./Makefile
 
 # main file 
 if [ "$1" == "c" ]; then end='.c'; else end='.cpp'; fi 
