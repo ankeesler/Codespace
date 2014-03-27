@@ -45,6 +45,11 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- ensured consistent formatting of messages to user
 	- removed dependencies on old utilities
 
+1.2.3 - Added summary feature, language variable, easy archiving
+	- new language variable for your project
+	- summary now includes an elapsed time variable
+	- archive target now in makefile
+
 **** Utilities ****
 1. ./export directory
 	- exports your project to directory
