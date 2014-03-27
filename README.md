@@ -1,4 +1,4 @@
-Welcome to Codespace 1.1.2!
+Welcome to Codespace 1.2.2!
 
 Codespace is a lightweight, POSIX compiant, command line development environment.
 
