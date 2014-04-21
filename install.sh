@@ -20,3 +20,4 @@ cp ./new $directory
 cp ./summary $directory
 cp ./export $directory
 cp ./delete $directory 
+cp ./import $directoy

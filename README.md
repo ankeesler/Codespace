@@ -1,4 +1,4 @@
-Welcome to Codespace 1.2.3!
+Welcome to Codespace 1.2.4!
 
 Codespace is a lightweight, POSIX compiant, command line development environment.
 
@@ -50,10 +50,19 @@ Codespace is a lightweight, POSIX compiant, command line development environment
 	- summary now includes an elapsed time variable
 	- archive target now in makefile
 
+1.2.4 -import tool plus more sophisticated header file creation
+	- new import tool will import files to project
+	- header files now contain include guards
+ 	- source files contain include statements with reference to header files
+	- install.sh file updated with added import tool
+
 **** Utilities ****
-1. ./export directory
+1. ./import file
+	- imports files to your project directory
+	- automatically updates makefile
+2. ./export directory
 	- exports your project to directory
-2. ./summary
+3. ./summary
 	- prints out a summary of your project
 
 **** Depreciated Utilities ****

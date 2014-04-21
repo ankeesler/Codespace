@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# imports a file
+
+if [ ! -f ./files.log ]
+then
+	echo '**** No current project.'
+	exit
+fi
+
+if [ -z $1 ]
+then
+	echo '**** usage: import file'
+	exit
+fi
+
+filepath=`echo $1`
+filename=$(echo ${filepath##*/} | sed 's_\..*__')
+fileend=${filepath##*\.}
+
+# if file exists, make it a .bak
+if [ -f ./$filename.$fileend ]
+then
+	echo "**** ./$filename.$fileend already exists, moving current file to ./$filename.$fileend.bak"
+	mv ./$filename ./$filename.$fileend.bak
+fi
+
+./new $fileend $filename
+cp $filepath ./
+echo "**** $filename.$fileend successfully imported"
+

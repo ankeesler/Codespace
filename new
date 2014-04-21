@@ -14,8 +14,12 @@ then
 	echo $2.h >> ./files.log
 	echo '//\t'$2.c >> ./$2.c
 	echo "//\tcreated `date`" >> ./$2.c
+	echo "\n\n#include \"$2.h\"" >> ./$2.c
 	echo '//\t'$2.h >> ./$2.h
 	echo "//\tcreated `date`" >> ./$2.h
+	echo "#ifndef __$2_H" >>./$2.h
+	echo "#define __$2_H" >>./$2.h
+	echo "#endif /* __$2_H */" >>./$2.h
 	sed -i.bak "s/OBJ=\(.*\)/OBJ=\1 $2.o/g" ./Makefile
 	rm ./Makefile.bak
 	echo $2.o: >> ./Makefile
@@ -30,13 +34,26 @@ then
 	echo $2.h >> ./files.log
 	echo '//\t'$2.cpp >> ./$2.cpp
 	echo "//\tcreated `date`" >> ./$2.cpp
+	echo "\n\n#include \"$2.h\"" >> ./$2.cpp
 	echo '//\t'$2.h >> ./$2.h
 	echo "//\tcreated `date`" >> ./$2.h
+	echo "#ifndef __$2_H" >>./$2.h
+	echo "#define __$2_H" >>./$2.h
+	echo "#endif /* __$2_H */" >>./$2.h
 	sed -i.bak "s/OBJ=\(.*\)/OBJ=\1 $2.o/g" ./Makefile
 	rm ./Makefile.bak
 	echo $2.o: >> ./Makefile
 	echo '\t${CC} ${FLAGS} -o '$2'.o -c '$2'.cpp' >> ./Makefile
 	echo "**** Created $2.cpp, $2.h"
+else if [ "$1" == "h" ]
+then
+	if [ -f $2.h ]; then echo "**** $2.cpp already created"; exit; fi
+	touch $2.h
+	echo '//\t'$2.h >> ./$2.h
+	echo "//\tcreated `date`" >> ./$2.h
+	echo "#ifndef __$2_H" >>./$2.h
+	echo "#define __$2_H" >>./$2.h
+	echo "#endif /* __$2_H */" >>./$2.h
 else if [ "$1" == "java" ]
 then
 	if [ -f $2.java ]; then echo "**** $2.java already created"; exit; fi
@@ -45,6 +62,7 @@ then
 	echo "class $2 {" >> ./$2.java
 	echo "\n\n}" >> ./$2.java
 	sed -i.bak "s/JVC=\(.*\)/JVC=\1 $2.class/g" ./Makefile
+	rm ./Makefile.bak
 	echo $2.class: >> ./Makefile
 	echo '\tjavac '$2.java >> ./Makefile
 	echo "**** Created $2.java"
@@ -86,6 +104,7 @@ else
 	echo $1.txt >> ./files.log
 	echo $1.txt >> ./$1.txt
 	echo "**** Created $1.txt"
+fi
 fi
 fi
 fi
